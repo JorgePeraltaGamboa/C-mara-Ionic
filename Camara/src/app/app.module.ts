@@ -10,7 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { NewPage } from '../pages/new/new';
 import { RegisterPage } from '../pages/register/register';
 import { ExitPage } from '../pages/exit/exit';
-@NgModule({
+import { IonicStorageModule } from '@ionic/storage';
+@NgModule({ 
   declarations: [
     MyApp,
     HomePage,
@@ -20,7 +21,8 @@ import { ExitPage } from '../pages/exit/exit';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
