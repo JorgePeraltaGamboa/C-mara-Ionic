@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title style="text-align: center">
+        Registro Visitante
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  <!--
+    Nombre
+    Apepat
+    Apemat
+    ID
+    Boton guardar
+  -->
+  <ion-content padding>
+    <ion-card>
+      <ion-card-content>
+        <form>
+          <span class="input-label">Nombre</span><br>
+          <input type="text" style="padding-left: 6px"><br>
+          <span class="input-label">Apellido Paterno</span><br>
+          <input type="text" style="padding-left: 6px"><br>
+          <span class="input-label">Apellido Materno</span><br>
+          <input type="text" style="padding-left: 6px"><br>
+        </form>
+        
+      </ion-card-content>
+    </ion-card><br>
+    <ion-card>
+      <ion-card-content >
+          <span>Identificacion</span><br>
+          <div style="text-align: center">
+          <button ion-button (click)="TomarFoto()"><ion-icon name="camera"></ion-icon></button>
+          </div>
+      </ion-card-content>
+    </ion-card>
+    <div style="width: 100%; text-align: center"><button  ion-button  name="">Guardar</button></div>
+    <p><img src="{{ myphoto }}"></p>
+  </ion-content>

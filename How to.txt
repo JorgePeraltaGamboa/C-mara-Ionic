@@ -1,0 +1,19 @@
+Es necesario tener Node.js
+Comando necesarios:
+Instalar Ioni: npm install -g cordova ionic
+Se necesita la versión más alta del SDK que se baja y se instala de Oracle
+
+Para crear el proyecto:
+ionic start Camera[nombre del proyecto] blank [Template]
+
+Correr el proyecto:
+ionic serve y ionic lab, sirven para dar un preview web de la aplicación
+
+Para el plugin de la camara
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
+
+Consideraciones:
+Importamos el plugin
+src/app/ app.module.ts 
+src/pages home.ts

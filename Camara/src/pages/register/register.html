@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registro entrada</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <form>
+        <span class="input-label">ID</span>
+        <br>
+        <div>
+          <input type="text" style="padding-left: 6px; width: 75%" class="">
+          <button ion-button>
+            <ion-icon name="search" (click)="ToNewPage()"></ion-icon>
+          </button>
+        </div>
+        <br>
+        <span class="input-label">Nombre</span>
+        <br>
+        <input type="text" style="padding-left: 6px" class="input-gen">
+        <br>
+        <span class="input-label">Apellidos</span>
+        <br>
+        <input type="text" style="padding-left: 6px">
+        <br>
+        <span class="input-label">Placa</span>
+        <br>
+        <input type="text" style="padding-left: 6px">
+        <br>
+        <span class="input-label">No. Cono</span>
+        <br>
+        <input type="number" style="padding-left: 6px" min="0">
+        <br>
+        <span class="input-label">Calle</span>
+        <br>
+        <input type="text" style="padding-left: 6px">
+        <br>
+        <span class="input-label">#</span>
+        <br>
+        <input type="text" style="padding-left: 6px">
+        <br>
+        <span class="input-label">Placa</span>
+        <br>
+        <input type="text" style="padding-left: 6px">
+        <br>
+      </form>
+    </ion-card-content>
+    <ion-card>
+      <ion-card-content>
+        <span>Identificacion</span>
+        <br>
+        <div style="text-align: center">
+          <button ion-button (click)="TomarFoto()">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+          <button ion-button color="danger">
+            <ion-icon name="close" (click)="DeleteFoto()"></ion-icon>
+          </button>
+        </div>
+        <p>
+          <img class="full-image" src="{{ myphoto }}">
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <button ion-button block>Registrar</button>
+    <br>
+  </ion-card>
+
+</ion-content>
