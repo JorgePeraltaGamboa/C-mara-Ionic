@@ -11,6 +11,10 @@ import { NewPage } from '../pages/new/new';
 import { RegisterPage } from '../pages/register/register';
 import { ExitPage } from '../pages/exit/exit';
 import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+//import { HttpClientModule } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
+
 @NgModule({ 
   declarations: [
     MyApp,
@@ -21,7 +25,10 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicModule.forRoot(MyApp,{
+      montNames:['Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre']
+    }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -35,8 +42,10 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     Camera,
+    RestProvider,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}

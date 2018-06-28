@@ -13,42 +13,63 @@
     Boton guardar
   -->
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      <form>
-        <span class="input-label">Nombre</span>
-        <br>
-        <input type="text" style="padding-left: 6px">
-        <br>
-        <span class="input-label">Apellido Paterno</span>
-        <br>
-        <input type="text" style="padding-left: 6px">
-        <br>
-        <span class="input-label">Apellido Materno</span>
-        <br>
-        <input type="text" style="padding-left: 6px">
-        <br>
-      </form>
-
-    </ion-card-content>
-  </ion-card>
-  <br>
-  <ion-card>
-    <ion-card-content>
+  <form>
+    <ion-item>
+      <ion-label>Nombre(s)</ion-label>
+      <ion-input [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-item style="display: none;" id="name-block">
+      <p color="danger" ion-text>El Nombre es obligatorio *</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido Paterno</ion-label>
+      <ion-input [(ngModel)]="Apepat" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-item style="display: none;" id="apepat-block">
+      <p color="danger" ion-text>El Apellido Paterno es obligatorio *</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido Materno</ion-label>
+      <ion-input [(ngModel)]="Apemat" [ngModelOptions]="{standalone: true}"></ion-input>
+    </ion-item>
+    <ion-item style="display: none;" id="apemat-block">
+      <p color="danger" ion-text>El Apellido Materno es obligatorio *</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha Nacimiento</ion-label>
+      <ion-datetime displayFormat="DD MMMM YYYY" montNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
+        cancelText="Cancelar" doneText="De acuerdo" [(ngModel)]="f_nac" [ngModelOptions]="{standalone: true}"></ion-datetime>
+    </ion-item>
+    <ion-item style="display: none;" id="date-block">
+      <p color="danger" ion-text>La fecha de nacimiento es obligatoria *</p>
+    </ion-item>
+    <br>
+    <ion-card>
       <span>Identificacion</span>
-      <br>
-      <div style="text-align: center">
-        <button ion-button (click)="TomarFoto()">
-          <ion-icon name="camera"></ion-icon>
-        </button>
-      </div>
-      <p>
-        <img src="{{ myphoto }}">
-      </p>
-    </ion-card-content>
-
-  </ion-card>
-  <div style="width: 100%; text-align: center">
-    <button ion-button name="">Guardar</button>
-  </div>
+      <ion-card-content style="text-align: center">
+        <br>
+        <div>
+          <p>
+            <img style="width: 50%;" src="{{ myphoto }}">
+          </p>
+        </div>
+        <div style="text-align: center; display: block" id="new-photo-button">
+          <button ion-button (click)="TomarFoto()">
+            <ion-icon name="camera"></ion-icon>
+          </button>
+        </div>
+        <div style="text-align: center; display: none" id="new-cancel-button">
+          <button ion-button color="danger" (click)="DeleteFoto()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </div>
+        <ion-item style="display: none;" id="photo-block">
+          <p color="danger" ion-text style="text-align: center">Fotografía obligatoria *</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <div style="width: 100%; text-align: center">
+      <button ion-button name="" (click)="Validate()">Guardar</button>
+    </div>
+  </form>
 </ion-content>
