@@ -45,14 +45,14 @@
     </ion-item>
     <br>
     <ion-card>
-      <span>Identificacion</span>
-      <ion-card-content style="text-align: center">
+      <ion-card-content>
+        <span>Identificacion</span>
         <br>
-        <div>
-          <p>
-            <img style="width: 50%;" src="{{ myphoto }}">
-          </p>
-        </div>
+        <div style="text-align: center">
+        <p>
+          <img style="width: 50%;" src="{{ myphoto }}">
+        </p>
+      </div>
         <div style="text-align: center; display: block" id="new-photo-button">
           <button ion-button (click)="TomarFoto()">
             <ion-icon name="camera"></ion-icon>
