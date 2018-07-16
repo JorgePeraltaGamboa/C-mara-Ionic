@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { RestProvider } from '../../providers/rest/rest';
 import { AlertController } from 'ionic-angular';
+import { SettingsPage } from '../settings/settings';
 /**
  * Generated class for the LoginPage page.
  *
@@ -31,6 +32,9 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+  ToSettings(){
+    this.navCtrl.push(SettingsPage);
+  }
   Validate() {
     var pass: boolean = true;
     if (this.username == undefined || this.username == "") {
@@ -53,7 +57,7 @@ export class LoginPage {
     this.hiden_input[2]=true;
     this.provider.AuthenticateLogin(this.username, this.passwd).subscribe((data) => {
       if (data.success) {
-        //this.navCtrl.push(SettingsPage);
+        this.ToSettings();
       } else {
         let alertAutFailed = this.alertCtrl.create({
           title: 'Mensaje',

@@ -12,11 +12,12 @@ import { NewPage } from '../pages/new/new';
 import { RegisterPage } from '../pages/register/register';
 import { ExitPage } from '../pages/exit/exit';
 import { LoginPage } from '../pages/login/login';
+import { OptionsPage } from '../pages/options/options';
+import { SettingsPage } from '../pages/settings/settings';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 //import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-import { OptionsPage } from '../pages/options/options';
 
 @NgModule({ 
   declarations: [
@@ -26,7 +27,8 @@ import { OptionsPage } from '../pages/options/options';
     RegisterPage,
     ExitPage,
     LoginPage,
-    OptionsPage
+    OptionsPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { OptionsPage } from '../pages/options/options';
     RegisterPage,
     ExitPage,
     LoginPage,
-    OptionsPage
+    OptionsPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
