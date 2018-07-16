@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { RestProvider } from '../../providers/rest/rest';
-
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,10 +18,11 @@ import { RestProvider } from '../../providers/rest/rest';
 export class LoginPage {
   hiden_input = [];
   i: number = 0;
-  username: string ="";
-  passwd: string ="";
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    while (this.i < 2) {
+  username: string = "";
+  passwd: string = "";
+  constructor(public navCtrl: NavController, public navParams: NavParams, public provider: RestProvider,
+  public alertCtrl: AlertController) {
+    while (this.i < 3) {
       this.hiden_input[this.i] = true;
       this.i += 1;
     }
@@ -49,8 +50,22 @@ export class LoginPage {
     }
   }
   Autenthicate() {
-    alert(this.username);
-    alert(this.passwd);
+    this.hiden_input[2]=true;
+    this.provider.AuthenticateLogin(this.username, this.passwd).subscribe((data) => {
+      if (data.success) {
+        //this.navCtrl.push(SettingsPage);
+      } else {
+        let alertAutFailed = this.alertCtrl.create({
+          title: 'Mensaje',
+          message: '<br><h3>' + data.message + '</h3>',
+          buttons: ['Aceptar']
+        });
+        alertAutFailed.present();
+        this.hiden_input[2]=false;
+        this.username="";
+        this.passwd="";
+      }
+    });
   }
 
 }

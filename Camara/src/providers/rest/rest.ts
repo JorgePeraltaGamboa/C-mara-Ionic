@@ -48,4 +48,7 @@ export class RestProvider {
   Exit(id){
     return this.http.get(this.apiUrl + "Access/Update/?id="+id).map(res => res.json());
   }
+  AuthenticateLogin(username, passwd){
+    return this.http.get(this.apiUrl + "User/Authenticate/?user="+username+"&password="+passwd).map(res => res.json());
+  }
 }

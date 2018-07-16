@@ -32,7 +32,9 @@
           <p color="danger" ion-text>Contraseña obligatoria *</p>
         </ion-item>
         <br>
-
+        <ion-item [hidden]="hiden_input[2]" id="autfailed-block">
+          <p color="danger" ion-text>Información incorrecta *</p>
+        </ion-item>
       </ion-list>
       <button ion-button full (click)="Validate()">Entrar</button>
     </ion-card-content>
