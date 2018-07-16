@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { NewPage } from '../pages/new/new';
 import { RegisterPage } from '../pages/register/register';
 import { ExitPage } from '../pages/exit/exit';
+import { LoginPage } from '../pages/login/login';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 //import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +25,7 @@ import { OptionsPage } from '../pages/options/options';
     NewPage,
     RegisterPage,
     ExitPage,
+    LoginPage,
     OptionsPage
   ],
   imports: [
@@ -44,6 +46,7 @@ import { OptionsPage } from '../pages/options/options';
     NewPage,
     RegisterPage,
     ExitPage,
+    LoginPage,
     OptionsPage
   ],
   providers: [

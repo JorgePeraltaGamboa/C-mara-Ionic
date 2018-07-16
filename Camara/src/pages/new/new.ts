@@ -78,7 +78,7 @@ export class NewPage {
     const options: CameraOptions = {
       cameraDirection: 1,
       correctOrientation: false,
-      quality: 70,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,

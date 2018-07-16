@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ExitPage } from '../exit/exit';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -21,4 +22,7 @@ export class HomePage {
   ToExitPage(){
     this.navCtrl.push(ExitPage);
   }
+  ToLogin(){
+    this.navCtrl.push(LoginPage);
+  }  
 }
