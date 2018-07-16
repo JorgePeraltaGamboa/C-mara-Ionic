@@ -1,16 +1,23 @@
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Control de visitas</ion-title>
+    <ion-navbar hideBackButton>
+      <ion-title style="text-align: center">Control de visitas</ion-title>
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
+  <ion-content center text-center style="display: flex!important;align-content: center!important;align-items: center!important;">
+    <!--
     <ion-card>
       <ion-card-content>
-        <button ion-button full (click)="ToNewPage()">Entradas</button><br>
-        <button ion-button full color="danger" (click)="ToExitPage()">Salidas</button>
+        <button style="font-size: 20px; height: 120px;" ion-button full round (click)="ToNewPage()">Entradas</button><br>
+        <button style="font-size: 20px; height: 120px;" ion-button full round color="danger" (click)="ToExitPage()">Salidas</button>
       </ion-card-content>
     </ion-card>
-  
+    -->
+    <ion-grid style="height: 100%">
+      <ion-row justify-content-center align-items-center style="height: 100%">
+        <button style="font-size: 20px; height: 40%; width: 80%" ion-button round (click)="ToNewPage()">Entradas</button><br>
+        <button style="font-size: 20px; height: 40%; width: 80%" ion-button round color="danger" (click)="ToExitPage()">Salidas</button>      
+      </ion-row>
+    </ion-grid>
   </ion-content>

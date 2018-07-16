@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ExitPage } from '../exit/exit';
 
@@ -10,7 +10,10 @@ import { ExitPage } from '../exit/exit';
 export class HomePage {
   
   //myphoto:any;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public platform: Platform) {
+    this.platform.registerBackButtonAction(()=>{
+      
+    });
   }
   ToNewPage(){
     this.navCtrl.push(RegisterPage);    

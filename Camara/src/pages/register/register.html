@@ -1,63 +1,89 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Registro entrada</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-buttons left>
+      <button ion-button (click)="doBack()">
+        <ion-icon class="customIcon" name="arrow-back"> Atrás</ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Registro entrada</ion-title>
+    <ion-buttons end>
+      <button ion-button item-right round style="margin-right: 15px;"></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <ion-label>ID</ion-label>
-      <ion-input [(ngModel)]="pin"></ion-input>
-      <button ion-button item-right (click)="ToNewPage()">
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="pin" type="text" placeholder="ID" (ionChange)="toUpperPIN(pin)"></ion-input>
+      <button ion-button item-right round (click)="ToNewPage()" style="height: 35px; width: 35px;" large>
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-item>
-    <ion-item>
-      <ion-label>Nombre</ion-label>
-      <ion-input [(ngModel)]="nombre"></ion-input>
+    <ion-item [hidden]="hiden_input[0]" id="reg-id-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
     </ion-item>
-    <ion-item>
-      <ion-label>Apellidos</ion-label>
-      <ion-input [(ngModel)]="apellidos"></ion-input>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="nombre" placeholder="Nombre"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item [hidden]="hiden_input[1]" id="reg-name-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
+    </ion-item>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="apellidos" placeholder="Apellidos"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="hiden_input[2]" id="reg-ape-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
+    </ion-item>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="plate" (ionChange)="toUpperPlante(plate)" placeholder="Placa"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="hiden_input[4]" id="reg-plate-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
+    </ion-item>
+    <ion-item style="font-size: 30px;">
       <ion-label>Asunto</ion-label>
-      <ion-select [(ngModel)]="subject">
+      <ion-select [(ngModel)]="subject" [selectOptions]="selectOptions" cancelText="Cancelar" okText="Aceptar">
         <ion-option *ngFor="let subject of subjects" [value]="subject.Id">{{subject.Name}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>Placa</ion-label>
-      <ion-input [(ngModel)]="placa"></ion-input>
+    <ion-item [hidden]="hiden_input[3]" id="reg-sub-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
     </ion-item>
-    <ion-item>
-      <ion-label>No. Cono</ion-label>
-      <ion-input [(ngModel)]="no_cono" type="number"></ion-input>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="cone" type="number" min=0 placeholder="No. Cono"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item [hidden]="hiden_input[5]" id="reg-cone-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
+    </ion-item>
+    <ion-item style="font-size: 30px;">
       <ion-label>Calle</ion-label>
-      <ion-select [(ngModel)]="street">
+      <ion-select [(ngModel)]="street" (ionChange)="checkDom()" cancelText="Cancelar" okText="Aceptar">
         <ion-option *ngFor="let street of streets" [value]="street.Id">{{street.Name}}</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>No. Calle</ion-label>
-      <ion-input [(ngModel)]="no_calle" type="number"></ion-input>
+    <ion-item [hidden]="hiden_input[6]" id="reg-str-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
+    </ion-item>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="no_house" type="number" placeholder="No. Calle" (focusout)="checkDom()"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="hiden_input[7]" id="reg-no-block">
+      <p color="danger" ion-text>Campo obligatorio *</p>
     </ion-item>
   </ion-list>
-
+  <!--
   <ion-card>
-    <ion-card-content>
+    <ion-card-content text-center>
       <span>Identificacion</span>
-      <br>
-      <p style="text-align: center">
-        <img style="width: 50%;" src="{{ myphoto }}">
-      </p>
+      <ion-row>
+        <ion-col col-12>
+          <img id="reg-myphoto" style="display: block;" src="{{ myphoto }}" (load)="RotateFoto()">
+        </ion-col>
+    </ion-row>
       <div style="text-align: center; display: block" id="photo-button">
-        <button ion-button (click)="TomarFoto()">
+        <button ion-button (click)="TomarFoto()" style="width: 60px; height: 60px;" large>
           <ion-icon name="camera"></ion-icon>
         </button>
       </div>
@@ -67,10 +93,15 @@
         </button>
       </div>
     </ion-card-content>
+    <ion-item [hidden]="hiden_input[8]" id="reg-photo-block">
+      <p color="danger" ion-text>Fotografía obligatoria *</p>
+    </ion-item>
   </ion-card>
-  <ion-card style="text-align: center">
-    <button ion-button block (click)="RegistrarVisita()">Registrar</button>
-  </ion-card>
-
-
+-->
+  <button ion-button block round (click)="Validate()" style="font-size: 20px; height: 100px; width: 100%">Registrar</button>
+  <br>
+  <div style="text-align: center; display: none" id="cancel-button">
+    <button ion-button block round (click)="SendOn()">On</button>
+    <button ion-button block round (click)="SendOff()" color="danger">Off</button>
+  </div>
 </ion-content>

@@ -1,8 +1,13 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton>
     <ion-title style="text-align: center">
       Registro Visitante
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="doBack()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <!--
@@ -14,47 +19,42 @@
   -->
 <ion-content padding>
   <form>
-    <ion-item>
-      <ion-label>Nombre(s)</ion-label>
-      <ion-input [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}"></ion-input>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}" placeholder="Nombre(s)"></ion-input>
     </ion-item>
-    <ion-item style="display: none;" id="name-block">
+    <ion-item [hidden]="hiden_input[0]" id="name-block">
       <p color="danger" ion-text>El Nombre es obligatorio *</p>
     </ion-item>
-    <ion-item>
-      <ion-label>Apellido Paterno</ion-label>
-      <ion-input [(ngModel)]="Apepat" [ngModelOptions]="{standalone: true}"></ion-input>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="Apepat" [ngModelOptions]="{standalone: true}" placeholder="Primer Apellido"></ion-input>
     </ion-item>
-    <ion-item style="display: none;" id="apepat-block">
-      <p color="danger" ion-text>El Apellido Paterno es obligatorio *</p>
+    <ion-item [hidden]="hiden_input[1]" id="apepat-block">
+      <p color="danger" ion-text>El primer apellido es obligatorio *</p>
     </ion-item>
-    <ion-item>
-      <ion-label>Apellido Materno</ion-label>
-      <ion-input [(ngModel)]="Apemat" [ngModelOptions]="{standalone: true}"></ion-input>
+    <ion-item style="font-size: 30px;">
+      <ion-input [(ngModel)]="Apemat" [ngModelOptions]="{standalone: true}" placeholder="Segundo Apellido"></ion-input>
     </ion-item>
-    <ion-item style="display: none;" id="apemat-block">
-      <p color="danger" ion-text>El Apellido Materno es obligatorio *</p>
+    <ion-item [hidden]="hiden_input[2]" id="apemat-block">
+      <p color="danger" ion-text>El Segundo apellido es obligatorio *</p>
     </ion-item>
-    <ion-item>
+    <ion-item style="font-size: 30px;">
       <ion-label>Fecha Nacimiento</ion-label>
-      <ion-datetime displayFormat="DD MMMM YYYY" montNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"
-        cancelText="Cancelar" doneText="De acuerdo" [(ngModel)]="f_nac" [ngModelOptions]="{standalone: true}"></ion-datetime>
+      <ion-datetime displayFormat="DD MMMM YYYY" cancelText="Cancelar" doneText="Ok" [(ngModel)]="f_nac" [ngModelOptions]="{standalone: true}"></ion-datetime>
     </ion-item>
-    <ion-item style="display: none;" id="date-block">
+    <ion-item [hidden]="hiden_input[3]" id="date-block">
       <p color="danger" ion-text>La fecha de nacimiento es obligatoria *</p>
     </ion-item>
     <br>
     <ion-card>
-      <ion-card-content>
+      <ion-card-content text-center>
         <span>Identificacion</span>
-        <br>
-        <div style="text-align: center">
-        <p>
-          <img style="width: 50%;" src="{{ myphoto }}">
-        </p>
-      </div>
+        <ion-row>
+            <ion-col col-12>
+                <img style="display: block;" id="new-myphoto" src="{{ myphoto }}" (load)="RotateFoto()"/>
+            </ion-col>
+        </ion-row>
         <div style="text-align: center; display: block" id="new-photo-button">
-          <button ion-button (click)="TomarFoto()">
+          <button ion-button (click)="TomarFoto()" style="height: 60px; width: 60px;" large>
             <ion-icon name="camera"></ion-icon>
           </button>
         </div>
@@ -63,13 +63,12 @@
             <ion-icon name="close"></ion-icon>
           </button>
         </div>
-        <ion-item style="display: none;" id="photo-block">
+        <ion-item [hidden]="hiden_input[4]" id="photo-block">
           <p color="danger" ion-text style="text-align: center">Fotografía obligatoria *</p>
         </ion-item>
       </ion-card-content>
     </ion-card>
-    <div style="width: 100%; text-align: center">
-      <button ion-button name="" (click)="Validate()">Guardar</button>
-    </div>
+    <button ion-button full round color="blue" (click)="Validate()">Guardar</button>
+    <button ion-button full round color="danger" (click)="doBack()">Cancelar</button>
   </form>
 </ion-content>

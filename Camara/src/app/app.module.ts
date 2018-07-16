@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 //import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { OptionsPage } from '../pages/options/options';
 
 @NgModule({ 
   declarations: [
@@ -21,13 +23,17 @@ import { RestProvider } from '../providers/rest/rest';
     HomePage,
     NewPage,
     RegisterPage,
-    ExitPage
+    ExitPage,
+    OptionsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp,{
-      montNames:['Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre']
+      monthNames:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+      monthShortNames: ['Ene', 'Feb', 'Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+      dayNames: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado' ],
+      dayShortNames: ['Dom', 'Lun', 'Mar','Mie','Jue','Vie','Sab'],
     }),
     IonicStorageModule.forRoot()
   ],
@@ -37,10 +43,12 @@ import { RestProvider } from '../providers/rest/rest';
     HomePage,
     NewPage,
     RegisterPage,
-    ExitPage
+    ExitPage,
+    OptionsPage
   ],
   providers: [
     StatusBar,
+    BluetoothSerial,
     Camera,
     RestProvider,
     SplashScreen,
