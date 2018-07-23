@@ -22,8 +22,8 @@ export class LoginPage {
   username: string = "";
   passwd: string = "";
   constructor(public navCtrl: NavController, public navParams: NavParams, public provider: RestProvider,
-  public alertCtrl: AlertController) {
-    while (this.i < 3) {
+    public alertCtrl: AlertController) {
+    while (this.i < 4) {
       this.hiden_input[this.i] = true;
       this.i += 1;
     }
@@ -32,7 +32,7 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  ToSettings(){
+  ToSettings() {
     this.navCtrl.push(SettingsPage);
   }
   Validate() {
@@ -54,20 +54,24 @@ export class LoginPage {
     }
   }
   Autenthicate() {
-    this.hiden_input[2]=true;
+    this.hiden_input[2] = true;
     this.provider.AuthenticateLogin(this.username, this.passwd).subscribe((data) => {
       if (data.success) {
         this.ToSettings();
       } else {
+        if (data.message.toString() == "Usuario sin Privilegios") {
+          this.hiden_input[3] = false;
+        }else if (data.message.toString() == "Acceso denegado") {
+          this.hiden_input[2] = false;
+          this.username = "";
+          this.passwd = "";
+        }
         let alertAutFailed = this.alertCtrl.create({
           title: 'Mensaje',
           message: '<br><h3>' + data.message + '</h3>',
           buttons: ['Aceptar']
         });
         alertAutFailed.present();
-        this.hiden_input[2]=false;
-        this.username="";
-        this.passwd="";
       }
     });
   }

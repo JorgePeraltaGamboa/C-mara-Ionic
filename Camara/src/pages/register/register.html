@@ -16,7 +16,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item style="font-size: 30px;">
-      <ion-input [(ngModel)]="pin" type="text" placeholder="ID" (ionChange)="toUpperPIN(pin)"></ion-input>
+      <ion-input [(ngModel)]="pin" type="text" placeholder="ID" (ionChange)="toUpperPIN(pin)" (focusout)="ToNewPage()"></ion-input>
       <button ion-button item-right round (click)="ToNewPage()" style="height: 35px; width: 35px;" large>
         <ion-icon name="search"></ion-icon>
       </button>

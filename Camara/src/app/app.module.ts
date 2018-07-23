@@ -18,6 +18,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 //import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { LocalStorageModule  } from 'angular-2-local-storage';
 
 @NgModule({ 
   declarations: [
@@ -39,7 +41,11 @@ import { RestProvider } from '../providers/rest/rest';
       dayNames: ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado' ],
       dayShortNames: ['Dom', 'Lun', 'Mar','Mie','Jue','Vie','Sab'],
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    LocalStorageModule.withConfig({
+      prefix: 'AccesControl',
+      storageType: 'localStorage'
+  })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +65,8 @@ import { RestProvider } from '../providers/rest/rest';
     RestProvider,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    LocalStorageService
   ]
 })
 export class AppModule {}

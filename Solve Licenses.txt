@@ -1,0 +1,1 @@
+C:\Users\Jorge del Angel\AppData\Local\Android\Sdk\tools\bin>sdkmanager --licenses

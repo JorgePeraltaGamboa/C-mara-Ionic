@@ -13,12 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content onload="loadBlueState()" padding>
   <ion-card>
     <ion-card-content>
       <ion-item>
         <ion-label>Bluetooth</ion-label>
-        <ion-toggle color="secondary" checked="false"></ion-toggle>
+        <ion-toggle id="bluecheked" [(ngModel)]="bluestate" color="secondary" (ionChange)="changeBluetooth()"></ion-toggle>
+      </ion-item>
+      <ion-item >
+        <ion-label>Dispositivo</ion-label>
+        <ion-select [(ngModel)]="device" cancelText="Cancelar" okText="Aceptar">
+          <ion-option *ngFor="let device of devices" [value]="device.address">{{device.name}}</ion-option>
+        </ion-select>
       </ion-item>
     </ion-card-content>
   </ion-card>

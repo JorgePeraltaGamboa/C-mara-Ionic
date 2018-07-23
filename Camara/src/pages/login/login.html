@@ -35,8 +35,11 @@
         <ion-item [hidden]="hiden_input[2]" id="autfailed-block">
           <p color="danger" ion-text>Información incorrecta *</p>
         </ion-item>
+        <ion-item [hidden]="hiden_input[3]" id="autfailed-block">
+          <p color="danger" ion-text>Usuario sin privilegios</p>
+        </ion-item>
       </ion-list>
-      <button ion-button full (click)="Validate()">Entrar</button>
+      <button ion-button full (click)="ToSettings()">Entrar</button>
     </ion-card-content>
   </ion-card>
 

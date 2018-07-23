@@ -64,7 +64,7 @@ export class OptionsPage {
   }
   increaseImage(img_url) {
     let alertExit = this.alertCtrl.create({
-      title: 'Confirmar salida',
+      title: 'Identificación',
       message: '<br><img src="' + this.url + img_url + '">',
       buttons: [
         {
